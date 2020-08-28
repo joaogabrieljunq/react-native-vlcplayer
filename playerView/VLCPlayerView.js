@@ -411,7 +411,6 @@ export default class VLCPlayerView extends Component {
       if (currentTime === 0 || currentTime === this.state.currentTime * 1000) {
       } else {
         this.setState({
-          loadingSuccess: loadingSuccess,
           isLoading: false,
           isError: false,
           progress: event.position,
