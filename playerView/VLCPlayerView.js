@@ -169,8 +169,7 @@ export default class VLCPlayerView extends Component {
         />
         {realShowLoding &&
           !isError && (
-            <View style={styles.loading}>
-              <ActivityIndicator size={'large'} animating={true} color="#fff" />
+            <View>
             </View>
           )}
         {isError && (
