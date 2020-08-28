@@ -32,7 +32,7 @@ export default class VLCPlayerView extends Component {
     super(props);
     this.state = {
       paused: true,
-      isLoading: true,
+      isLoading: false,
       loadingSuccess: false,
       isFull: false,
       currentTime: 0.0,
@@ -128,7 +128,7 @@ export default class VLCPlayerView extends Component {
         showGG = true;
       }
       if (isLoading) {
-        realShowLoding = true;
+        realShowLoding = false;
       }
     }
 
@@ -298,7 +298,7 @@ export default class VLCPlayerView extends Component {
    */
   onBuffering(event) {
     this.setState({
-      isLoading: true,
+      isLoading: false,
       isError: false,
     });
     this.bufferTime = new Date().getTime();
@@ -368,7 +368,7 @@ export default class VLCPlayerView extends Component {
     } else {
       this.vlcPlayer.seek(0);
       this.setState({
-        isLoading: true,
+        isLoading: false,
         isError: false,
         loadingSuccess: false,
         paused: true,
