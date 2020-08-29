@@ -1,30 +1,36 @@
-apply plugin: 'com.android.library'
-
-android {
-    compileSdkVersion 29
-    buildToolsVersion '29.0.2'
-
-    defaultConfig {
-        minSdkVersion 17
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-        ndk {
-            //支持的abi    可选 精简的库
-            abiFilters 'armeabi-v7a'//,'x86_64','arm64-v8a','x86'
-        }
+buildscript {
+    ext {
+        buildToolsVersion = "29.0.2"
+        minSdkVersion = 17
+        compileSdkVersion = 29
+        targetSdkVersion = 29
     }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath('com.android.tools.build:gradle:3.4.2')
+        //compile 'com.yyl.vlc:vlc-android-sdk:3.0.10'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
     }
 }
 
-dependencies {
-    provided fileTree(dir: 'libs', include: ['*.jar'])
-    compile "com.facebook.react:react-native:+"
-    compile 'com.yyl.vlc:vlc-android-sdk:3.0.10'
-    //compile 'de.mrmaffen:vlc-android-sdk:2.0.6'
+allprojects {
+    repositories {
+        mavenLocal()
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url("$rootDir/../node_modules/react-native/android")
+        }
+        maven {
+            // Android JSC is installed from npm
+            url("$rootDir/../node_modules/jsc-android/dist")
+        }
+
+        google()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+    }
 }
