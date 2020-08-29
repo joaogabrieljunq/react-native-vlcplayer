@@ -1,4 +1,4 @@
-apply: 'com.android.library'
+apply plugin: 'com.android.library'
 
 allprojects {
     repositories {
