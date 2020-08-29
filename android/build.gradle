@@ -1,3 +1,5 @@
+'com.android.library'
+
 buildscript {
     ext {
         buildToolsVersion = "29.0.2"
