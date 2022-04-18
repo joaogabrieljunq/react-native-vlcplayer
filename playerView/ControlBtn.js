@@ -50,7 +50,7 @@ export default class ControlBtn extends Component {
                       onPress={() => {
                         onFullPress && onFullPress();
                       }}
-                      style={{ width: 50, alignItems: 'center', justifyContent: 'center' }}>
+                      style={{ width: 50 }}>
                       <Icon name={isFull ? 'fullscreen-exit' : 'fullscreen'} size={30} color="#fff" />
                     </TouchableOpacity>
                   ) : <View style={{ width: 50 }} />
@@ -112,6 +112,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0.5)',
     alignItems: 'center',
     justifyContent: 'space-between',
+    alignSelf:'flex-end'
   },
 
   progress: {
