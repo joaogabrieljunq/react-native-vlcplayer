@@ -6,7 +6,6 @@ import {
   StyleSheet,
   Text,
   View,
-  Dimensions,
   TouchableOpacity,
   Platform,
 } from 'react-native';
@@ -96,7 +95,8 @@ export default class VLCPlayerView extends Component {
       showLeftButton,
       showMiddleButton,
       showRightButton,
-      errorTitle
+      errorTitle,
+      setFullScreen
     } = this.props;
     let { isLoading, loadingSuccess, showControls, isError } = this.state;
     let showGG = false;
@@ -231,7 +231,7 @@ export default class VLCPlayerView extends Component {
               currentTime={this.state.currentTime}
               totalTime={this.state.totalTime}
               onPausedPress={this._play}
-              onFullPress={this._toFullScreen}
+              onFullPress={() => setFullScreen(isFull)}
               onValueChange={value => {
                 this.changingSlider = true;
                 this.setState({
@@ -434,22 +434,6 @@ export default class VLCPlayerView extends Component {
       );
     }
   }
-
-  /**
-   * 全屏
-   * @private
-   */
-  _toFullScreen = () => {
-    let { startFullScreen, closeFullScreen, isFull } = this.props;
-    console.log(`isFull: ${isFull}`);
-    if (isFull) {
-      console.log("Minimizar tela");
-      closeFullScreen && closeFullScreen();
-    } else {
-      console.log("Maximizar tela");
-      startFullScreen && startFullScreen();
-    }
-  };
 
   /**
    * 播放/停止
