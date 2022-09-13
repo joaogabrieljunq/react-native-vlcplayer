@@ -86,12 +86,8 @@ export default class VLCPlayerView extends Component {
       onLeftPress,
       closeFullScreen,
       showBack,
-      showTitle,
       videoAspectRatio,
-      showGoLive,
-      onGoLivePress,
       onReplayPress,
-      titleGolive,
       showLeftButton,
       showMiddleButton,
       showRightButton,
@@ -154,7 +150,6 @@ export default class VLCPlayerView extends Component {
           onStopped={this.onEnded.bind(this)}
           onPlaying={this.onPlaying.bind(this)}
           onBuffering={this.onBuffering.bind(this)}
-          onPaused={this.onPaused.bind(this)}
           progressUpdateInterval={250}
           onError={this._onError}
           onOpen={this._onOpen}
@@ -197,14 +192,6 @@ export default class VLCPlayerView extends Component {
                 <Icon name={'chevron-left'} size={30} color="#fff" />
               </TouchableOpacity>
             )}
-            <View style={{ justifyContent: 'center', flex: 1, marginRight: 10 }}>
-              {showTitle &&
-                showControls && (
-                  <Text style={{ color: '#fff', fontSize: 16 }} numberOfLines={1}>
-                    {title}
-                  </Text>
-                )}
-            </View>
             {showGG && (
               <View style={styles.GG}>
                 <TimeLimt
@@ -220,9 +207,6 @@ export default class VLCPlayerView extends Component {
         <View style={[styles.bottomView]}>
           {showControls && (
             <ControlBtn
-              //style={isFull?{width:deviceHeight}:{}}
-              showSlider={!isGG}
-              showGG={showGG}
               onEnd={onEnd}
               title={title}
               onLeftPress={onLeftPress}
@@ -246,10 +230,7 @@ export default class VLCPlayerView extends Component {
                   this.vlcPlayer.seek(value);
                 }
               }}
-              showGoLive={showGoLive}
-              onGoLivePress={onGoLivePress}
               onReplayPress={onReplayPress}
-              titleGolive={titleGolive}
               showLeftButton={showLeftButton}
               showMiddleButton={showMiddleButton}
               showRightButton={showRightButton}
@@ -270,19 +251,6 @@ export default class VLCPlayerView extends Component {
     //   this.setState({ paused: false });
     // }
     //console.log('onPlaying');
-  }
-
-  /**
-   * 视屏停止
-   * @param event
-   */
-  onPaused(event) {
-    // if (!this.state.paused) {
-    //   this.setState({ paused: true, showControls: true });
-    // } else {
-    //   this.setState({ showControls: true });
-    // }
-    //console.log('onPaused');
   }
 
   /**
